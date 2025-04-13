@@ -1,5 +1,11 @@
-function Services() {
-    return <h1>🔗 Accès aux services de la maison</h1>
-  }
-  export default Services
+const Services = () => {
+    return (
+      <div>
+        <h2>Services favoris 🔗</h2>
+        <p>Accédez rapidement à Netflix, impôts, banque, etc.</p>
+      </div>
+    );
+  };
+  
+  export default Services;
   
