@@ -29,3 +29,8 @@ variable "storage_account_name" {
 variable "container_name" {
   default = "tfstate"
 }
+
+variable "custom_domain_name" {
+  default = "home.chvt.fr"
+
+}
