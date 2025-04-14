@@ -38,3 +38,9 @@ variable "custom_domain_name" {
   default = "home.chvt.fr"
 
 }
+
+variable "b2c_tenant_name" {
+  description = "Nom de ton tenant B2C (ex: yourb2ctenant.onmicrosoft.com)"
+  type        = string
+  default     = "remaxb2ctenant.onmicrosoft.com"
+}
