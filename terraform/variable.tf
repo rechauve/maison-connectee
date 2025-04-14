@@ -18,6 +18,10 @@ variable "resource_group_name" {
   default = "maison-connectee-rg"
 }
 
+variable "aadb2c_resource_group_name" {
+  default = "aadb2c-rg"
+}
+
 variable "static_site_name" {
   default = "maison-connectee-site"
 }
