@@ -6,9 +6,12 @@ import Meteo from './pages/Meteo';
 import Climatisation from './pages/Climatisation';
 import Services from './pages/Services';
 
+import LoginButton from "./components/LoginButton";
+
 function App() {
   return (
-    <Router>
+    <div>
+      <LoginButton />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,7 +20,7 @@ function App() {
         <Route path="/climatisation" element={<Climatisation />} />
         <Route path="/services" element={<Services />} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 
