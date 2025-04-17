@@ -1,10 +1,9 @@
+// src/components/LoginButton.jsx
 import React from "react";
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../authConfig";
 
 const LoginButton = () => {
-  console.log("✅ LoginButton loaded");
-
   const { instance } = useMsal();
 
   const handleLogin = () => {
@@ -14,9 +13,17 @@ const LoginButton = () => {
   return (
     <button
       onClick={handleLogin}
-      style={{ background: "lime", padding: "10px", fontSize: "1rem" }}
+      style={{
+        background: "#0078D4",
+        color: "white",
+        padding: "10px 20px",
+        fontSize: "16px",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+      }}
     >
-      Se connecter avec Google
+      Se connecter avec Azure AD B2C
     </button>
   );
 };

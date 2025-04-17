@@ -7,10 +7,13 @@ import Climatisation from './pages/Climatisation';
 import Services from './pages/Services';
 
 import LoginButton from "./components/LoginButton";
+import AuthenticationRedirectHandler from "./components/AuthenticationRedirectHandler";
+
 
 function App() {
   return (
     <div>
+      <AuthenticationRedirectHandler />
       <LoginButton />
       <Navbar />
       <Routes>

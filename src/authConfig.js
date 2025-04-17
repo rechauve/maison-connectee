@@ -1,18 +1,25 @@
 // src/authConfig.js
+
+const tenantDomain = "remaxb2ctenant.b2clogin.com";
+const tenantName = "remaxb2ctenant";
+const userFlow = "B2C_1_signupsigninmaison"; // à adapter avec ton nom de user flow
+const clientId = "050584ad-9aba-4c4d-a40d-249d19da7bb6"; // ton App Registration
+
 export const msalConfig = {
-    auth: {
-      clientId: "0fb342ca-5c8f-41e9-b48c-c9391689fe9a", // Remplace par ton vrai client ID
-      authority: "https://remaxb2ctenant.b2clogin.com/remaxb2ctenant.onmicrosoft.com/B2C_1_signupsignin", // Le nom du user flow ici
-      knownAuthorities: ["remaxb2ctenant.b2clogin.com"],
-      redirectUri: "http://localhost:3000/", // Ou https://home.chvt.fr/ en prod
-    },
-    cache: {
-      cacheLocation: "localStorage", // ou "sessionStorage"
-      storeAuthStateInCookie: false,
-    }
-  };
-  
-  export const loginRequest = {
-    scopes: ["openid", "profile", "email"],
-  };
+  auth: {
+    clientId: clientId,
+    authority: `https://${tenantDomain}/${tenantName}.onmicrosoft.com/${userFlow}`,
+    knownAuthorities: [tenantDomain],
+    redirectUri: "https://home.chvt.fr", // à adapter
+    postLogoutRedirectUri: "https://home.chvt.fr",
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: false,
+  },
+};
+
+export const loginRequest = {
+  scopes: ["openid", "profile", "email"],
+};
   
