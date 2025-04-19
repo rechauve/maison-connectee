@@ -1,5 +1,10 @@
 provider "azurerm" {
-  features {}
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy    = true
+      recover_soft_deleted_key_vaults = true
+    }
+  }
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
 }
@@ -22,7 +27,7 @@ resource "azurerm_storage_account" "tfstate" {
   public_network_access_enabled = true
   network_rules {
     default_action = "Deny"
-    ip_rules       = ["193.250.154.80"]
+    ip_rules       = [var.allowed_ip]
   }
 }
 
