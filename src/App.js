@@ -5,6 +5,8 @@ import Agenda from './pages/Agenda';
 import Meteo from './pages/Meteo';
 import Climatisation from './pages/Climatisation';
 import Services from './pages/Services';
+import AccessDenied from './pages/AccessDenied';
+import PrivateRoute from './components/PrivateRoute';
 
 import LoginButton from "./components/LoginButton";
 import AuthenticationRedirectHandler from "./components/AuthenticationRedirectHandler";
@@ -18,10 +20,23 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/agenda" element={<Agenda />} />
         <Route path="/meteo" element={<Meteo />} />
-        <Route path="/climatisation" element={<Climatisation />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/agenda" element={
+          <PrivateRoute>
+            <Agenda />
+          </PrivateRoute>
+        } />
+        <Route path="/climatisation" element={
+          <PrivateRoute>
+            <Climatisation />
+          </PrivateRoute>
+        } />
+        <Route path="/services" element={
+          <PrivateRoute>
+            <Services />
+          </PrivateRoute>
+        } />
+        <Route path="/access-denied" element={<AccessDenied />} />
       </Routes>
     </div>
   );
