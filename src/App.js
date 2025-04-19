@@ -8,7 +8,6 @@ import Services from './pages/Services';
 import AccessDenied from './pages/AccessDenied';
 import PrivateRoute from './components/PrivateRoute';
 
-import LoginButton from "./components/LoginButton";
 import AuthenticationRedirectHandler from "./components/AuthenticationRedirectHandler";
 
 
@@ -16,7 +15,6 @@ function App() {
   return (
     <div>
       <AuthenticationRedirectHandler />
-      <LoginButton />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

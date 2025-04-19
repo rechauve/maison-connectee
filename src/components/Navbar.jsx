@@ -20,11 +20,8 @@ export default function Navbar() {
         <NavLink to="/" className="hover:underline">
           Accueil
         </NavLink>
-        <NavLink to="/tasks" className="hover:underline">
-          Tâches
-        </NavLink>
-        <NavLink to="/settings" className="hover:underline">
-          Paramètres
+        <NavLink to="/meteo" className="hover:underline">
+          Météo
         </NavLink>
 
         {isAuthenticated && (
