@@ -1,4 +1,4 @@
-name: Deploy React App to Azure Static Web Apps
+name: Deploy Vite App to Azure Static Web Apps
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           rm -rf node_modules package-lock.json
-          npm install --legacy-peer-deps
+          npm install
 
       - name: Build app
         run: npm run build
@@ -33,4 +33,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"
-          output_location: "build"
+          output_location: "dist"

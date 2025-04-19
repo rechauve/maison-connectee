@@ -13,7 +13,7 @@ import AuthenticationRedirectHandler from "./components/AuthenticationRedirectHa
 
 function App() {
   return (
-    <div>
+    <div className="text-2xl text-green-500 font-semibold">
       <AuthenticationRedirectHandler />
       <Navbar />
       <Routes>
