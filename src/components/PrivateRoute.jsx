@@ -25,7 +25,12 @@ const PrivateRoute = ({ children }) => {
       account.idTokenClaims?.emails?.[0] ||
       account.idTokenClaims?.preferred_username;
 
-    console.log("Connected user:", userEmail);
+      if (!userEmail) {
+        console.warn("Impossible de récupérer l'e-mail de l'utilisateur.");
+        console.log("Account reçu :", account);
+      } else {
+        console.log("Connected user:", userEmail);
+      }
 
     if (allowedUsers.includes(userEmail)) {
       setAuthorized(true);
