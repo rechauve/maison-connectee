@@ -23,11 +23,13 @@ const PrivateRoute = ({ children }) => {
     const userEmail =
       account.username ||
       account.idTokenClaims?.emails?.[0] ||
+      account.idTokenClaims?.email ||
       account.idTokenClaims?.preferred_username;
 
       if (!userEmail) {
         console.warn("Impossible de récupérer l'e-mail de l'utilisateur.");
-        console.log("Account reçu :", account);
+        console.log("Account complet :", account);
+        console.log("Claims :", account.idTokenClaims);
       } else {
         console.log("Connected user:", userEmail);
       }
