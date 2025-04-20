@@ -4,8 +4,6 @@ import Loader from "../components/Loader";
 const cities = ["Laruscade", "Mimizan"];
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-console.log("API Key:", import.meta.env.VITE_WEATHER_API_KEY);
-
 const Meteo = () => {
   const [weatherData, setWeatherData] = useState({});
   const [loading, setLoading] = useState(true);
