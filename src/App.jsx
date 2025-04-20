@@ -8,13 +8,12 @@ import Services from './pages/Services';
 import AccessDenied from './pages/AccessDenied';
 import PrivateRoute from './components/PrivateRoute';
 
-import AuthenticationRedirectHandler from "./components/AuthenticationRedirectHandler";
+// import AuthenticationRedirectHandler from "./components/AuthenticationRedirectHandler"; <AuthenticationRedirectHandler />
 
 
 function App() {
   return (
     <div className="text-2xl text-green-500 font-semibold">
-      <AuthenticationRedirectHandler />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

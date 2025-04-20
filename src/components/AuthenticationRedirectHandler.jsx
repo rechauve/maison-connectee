@@ -1,17 +1,17 @@
-// src/components/AuthenticationRedirectHandler.jsx
-import { useEffect } from "react";
-import { useMsal } from "@azure/msal-react";
+// // src/components/AuthenticationRedirectHandler.jsx
+// import { useEffect } from "react";
+// import { useMsal } from "@azure/msal-react";
 
-const AuthenticationRedirectHandler = () => {
-  const { instance } = useMsal();
+// const AuthenticationRedirectHandler = () => {
+//   const { instance } = useMsal();
 
-  useEffect(() => {
-    instance.handleRedirectPromise().catch((error) => {
-      console.error("Redirect error: ", error);
-    });
-  }, [instance]);
+//   useEffect(() => {
+//     instance.handleRedirectPromise().catch((error) => {
+//       console.error("Redirect error: ", error);
+//     });
+//   }, [instance]);
 
-  return null;
-};
+//   return null;
+// };
 
-export default AuthenticationRedirectHandler;
+// export default AuthenticationRedirectHandler;
