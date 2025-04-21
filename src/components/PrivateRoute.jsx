@@ -1,45 +1,46 @@
+// src/components/PrivateRoute.jsx
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-
-const allowedUsers = [
-  "rechauve@gmail.com",
-  "maximech91@gmail.com"
-];
+import axios from "axios";
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useIsAuthenticated();
-  const { accounts } = useMsal();
+  const { instance, accounts } = useMsal();
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
-    if (!isAuthenticated || accounts.length === 0) {
-      setLoading(false);
-      return;
-    }
+    const checkAccess = async () => {
+      try {
+        const account = accounts[0];
+        const tokenResponse = await instance.acquireTokenSilent({
+          scopes: ["openid", "profile"],
+          account
+        });
 
-    const account = accounts[0];
-    const userEmail =
-      account.username ||
-      account.idTokenClaims?.emails?.[0] ||
-      account.idTokenClaims?.email ||
-      account.idTokenClaims?.preferred_username;
+        const res = await axios.get("/api/check-access", {
+          headers: {
+            Authorization: `Bearer ${tokenResponse.accessToken}`
+          }
+        });
 
-      if (!userEmail) {
-        console.warn("Impossible de récupérer l'e-mail de l'utilisateur.");
-        console.log("Account complet :", account);
-        console.log("Claims :", account.idTokenClaims);
-      } else {
-        console.log("Connected user:", userEmail);
+        if (res.data.access) {
+          setAuthorized(true);
+        }
+      } catch (error) {
+        console.error("Access check failed:", error);
+      } finally {
+        setLoading(false);
       }
+    };
 
-    if (allowedUsers.includes(userEmail)) {
-      setAuthorized(true);
+    if (isAuthenticated) {
+      checkAccess();
+    } else {
+      setLoading(false);
     }
-
-    setLoading(false);
-  }, [isAuthenticated, accounts]);
+  }, [isAuthenticated, instance, accounts]);
 
   if (loading) {
     return (

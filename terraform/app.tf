@@ -14,6 +14,7 @@ resource "azurerm_static_web_app" "main" {
 
   app_settings = {
     VITE_WEATHER_API_KEY = data.azurerm_key_vault_secret.meteo_api_key.value
+    VITE_ALLOWED_USERS   = data.azurerm_key_vault_secret.allowed_users.value
   }
 }
 
@@ -25,5 +26,10 @@ resource "azurerm_static_web_app_custom_domain" "main" {
 
 data "azurerm_key_vault_secret" "meteo_api_key" {
   name         = "vite-weather-api-key"
+  key_vault_id = azurerm_key_vault.app.id
+}
+
+data "azurerm_key_vault_secret" "allowed_users" {
+  name         = "vite-allowed-users"
   key_vault_id = azurerm_key_vault.app.id
 }
