@@ -1,6 +1,6 @@
 module.exports = async function (context, req) {
-  import.meta.env.VITE_ALLOWED_USERS?.split(",") || [];
 
+  const allowedUsers = import.meta.env.VITE_ALLOWED_USERS;
   const user = req.headers['x-ms-client-principal'];
 
   if (!user) {
