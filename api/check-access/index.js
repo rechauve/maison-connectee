@@ -1,10 +1,10 @@
 module.exports = async function (context, req) {
+  const allowedUsers = [
+    "rechauve@gmail.com",
+    "maximech91@gmail.com"
+  ];
 
-  const allowedUsers = import.meta.env.VITE_ALLOWED_USERS;
   const user = req.headers['x-ms-client-principal'];
-
-  console.log("Requested email: ", email);
-  console.log("Allowed users: ", allowedUsers);
 
   if (!user) {
     context.res = {
@@ -25,4 +25,3 @@ module.exports = async function (context, req) {
     body: { access: isAuthorized }
   };
 };
-
