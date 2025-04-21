@@ -3,10 +3,7 @@ import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
-const allowedUsers = [
-  "rechauve@gmail.com",
-  "maximech91@gmail.com"
-];
+const allowedUsers = import.meta.env.VITE_ALLOWED_USERS;
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useIsAuthenticated();
