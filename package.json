@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@azure/msal-browser": "4.11.0",
-    "@azure/msal-react": "3.0.9",
+    "@azure/msal-browser": "5.26.0",
+    "@azure/msal-react": "5.7.3",
     "axios": "^1.20.0",
     "jsonwebtoken": "^9.0.3",
     "react": "^19.3.1",
